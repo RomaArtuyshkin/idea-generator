@@ -507,3 +507,30 @@ body.neon-theme .favorite-item.selected {
     50% { transform: scale(0.8); }
     100% { transform: scale(1); }
 }
+
+.empty-favorites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 200px; /* чтобы сообщение не прижималось к верху */
+    padding: 30px;
+    color: #ffb8b8;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    margin: 20px 0;
+    grid-column: 1 / -1; /* растягиваем на всю ширину грида */
+}
+
+/* Светлая тема */
+body.light-theme .empty-favorites {
+    color: #ff6b6b;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Неоновая тема (если есть) */
+body.neon-theme .empty-favorites {
+    color: #ffb8b8;
+    text-shadow: 0 0 5px #ff6b6b;
+}
