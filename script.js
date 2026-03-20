@@ -191,8 +191,6 @@ function setActiveCategory(category) {
 
 // ========== ФУНКЦИЯ ГЕНЕРАЦИИ ИДЕИ ==========
 function generateNewIdea() {
-    // Скрываем список избранного, если открыт
-    favoritesList.classList.add('hidden');
     
     // Начинаем анимацию исчезновения текста
     ideaText.classList.add('fade-out');
