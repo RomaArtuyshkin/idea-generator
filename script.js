@@ -122,10 +122,10 @@ function isFavorite(index) {
 }
 function updateFavoriteButton(index) {
     if (isFavorite(index)) {
-        favoriteBtn.textContent = '❤️ В избранном';
+        favoriteBtn.textContent = '❤️ Удалить из избранного';
         favoriteBtn.classList.add('favorited');
     } else {
-        favoriteBtn.textContent = '🤍 В избранное';
+        favoriteBtn.textContent = '🤍 Добавить в избранное';
         favoriteBtn.classList.remove('favorited');
     }
 }
