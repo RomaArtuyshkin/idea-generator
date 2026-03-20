@@ -234,14 +234,22 @@ function generateNewIdea() {
 
 // ========== ПОКАЗ СПИСКА ИЗБРАННОГО ==========
 function showFavoritesList() {
+    favoritesListItems.innerHTML = '';
+    
     if (favorites.length === 0) {
-        alert('В избранном пока ничего нет. Добавьте идеи, нажимая на сердечко ❤️');
+        // Показываем сообщение, что избранное пусто
+        const emptyMessage = document.createElement('div');
+        emptyMessage.className = 'empty-favorites';
+        emptyMessage.textContent = '🤍 В избранном пока ничего нет. Добавьте идеи, нажимая на сердечко ❤️';
+        favoritesListItems.appendChild(emptyMessage);
+        favoritesList.classList.remove('hidden');
         return;
     }
-    favoritesListItems.innerHTML = '';
+    
     favorites.forEach((index, idx) => {
         const item = ideasWithBackgrounds[index];
         if (!item) return;
+        
         const card = document.createElement('div');
         card.className = 'favorite-item';
         card.style.animationDelay = `${idx * 0.05}s`;
@@ -250,27 +258,30 @@ function showFavoritesList() {
             <div style="font-size: 0.9rem; color: #ffb8b8;">Категория: ${item.category}</div>
         `;
         card.dataset.index = index;
+        
         card.addEventListener('click', () => {
-    // Убираем выделение у всех карточек
-    document.querySelectorAll('.favorite-item').forEach(c => c.classList.remove('selected'));
-    // Выделяем текущую карточку
-    card.classList.add('selected');
-
-    // Обновляем основную идею
-    typeWriter(item.idea, ideaText, 30);
-    document.body.style.backgroundImage = `url('${item.bg}')`;
-    document.body.style.backgroundSize = 'cover';
-    document.body.style.backgroundPosition = 'center';
-    document.body.style.backgroundAttachment = 'fixed';
-
-    // Обновляем кнопку избранного
-    updateFavoriteButton(index);
-    favoriteBtn.dataset.currentIndex = index;
-    favoriteBtn.style.display = 'inline-block';
-
-});
+            // Убираем выделение со всех карточек и выделяем текущую
+            document.querySelectorAll('.favorite-item').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            
+            // Запускаем печатную машинку для выбранной идеи
+            typeWriter(item.idea, ideaText, 30);
+            
+            document.body.style.backgroundImage = `url('${item.bg}')`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundAttachment = 'fixed';
+            
+            updateFavoriteButton(index);
+            favoriteBtn.dataset.currentIndex = index;
+            favoriteBtn.style.display = 'inline-block';
+            
+            // Список избранного не закрываем
+        });
+        
         favoritesListItems.appendChild(card);
     });
+    
     favoritesList.classList.remove('hidden');
 }
 
