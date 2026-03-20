@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор идей</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤔</text></svg>">
+</head>
+<body>
+    <div id="bg-overlay" class="bg-overlay"></div>
+    <div class="container">
+        <h1>🤔 Не знаешь, чем заняться?</h1>
+        <p class="subtitle">Нажми кнопку и получи случайную идею для развития или отдыха</p>
+        
+        <!-- Панель фильтров -->
+        <div class="filter-panel">
+            <div class="category-filter">
+                <button class="category-btn active" data-category="all">🌟 Все идеи</button>
+                <button class="category-btn" data-category="📚 Образование">📚 Образование</button>
+                <button class="category-btn" data-category="🎨 Творчество">🎨 Творчество</button>
+                <button class="category-btn" data-category="🧘 Релакс">🧘 Релакс</button>
+                <button class="category-btn" data-category="🏃 Активность">🏃 Активность</button>
+                <button class="category-btn" data-category="🍿 Развлечения">🍿 Развлечения</button>
+            </div>
+            <button id="favorites-filter-btn" class="favorites-filter-btn">❤️ Избранное</button>
+        </div>
+
+        <!-- Кнопка переключения темы (отдельная строка) -->
+        <div class="theme-row">
+            <button id="theme-toggle" class="theme-toggle">🌙 Тёмная</button>
+        </div>
+
+        <button id="generate-btn">✨ Вдохнови меня</button>
+        
+        <div id="idea-box" class="idea-box">
+            <p id="idea-text">Здесь появится идея...</p>
+            <button id="favorite-btn" class="favorite-btn" style="display: none;">🤍 В избранное</button>
+        </div>
+
+        <!-- Блок списка избранного (изначально скрыт) -->
+        <div id="favorites-list" class="favorites-list hidden">
+            <h3>❤️ Мои избранные идеи</h3>
+            <div id="favorites-list-items" class="favorites-list-items">
+                <!-- сюда будут вставляться карточки -->
+            </div>
+            <button id="close-favorites-list" class="close-btn">✕ Закрыть</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
